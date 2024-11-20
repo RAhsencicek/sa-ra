@@ -1,6 +1,6 @@
 # **Sa-Ra (Safe-Range)**
 
-## **Sa-Ra** (Safe-Range), internet bağlantısı olmadan Bluetooth Low Energy (BLE) teknolojisini kullanarak grup içi iletişim ve koordinasyonu sağlayan yenilikçi bir mobil uygulamadır. Özellikle GSM ve Wi-Fi erişiminin kısıtlı olduğu durumlar için tasarlanmıştır. Proje, grup içindeki güvenliği artırmayı ve iletişim sorunlarını çözmeyi hedeflemektedir.
+**Sa-Ra** (Safe-Range), internet bağlantısı olmadan Bluetooth Low Energy (BLE) teknolojisini kullanarak grup içi iletişim ve koordinasyonu sağlayan yenilikçi bir mobil uygulamadır. Özellikle GSM ve Wi-Fi erişiminin kısıtlı olduğu durumlar için tasarlanmıştır. Proje, grup içindeki güvenliği artırmayı ve iletişim sorunlarını çözmeyi hedeflemektedir.
 
 ## **🎯 Proje Hedefleri**
 
