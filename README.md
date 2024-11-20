@@ -1,38 +1,77 @@
+# **Sa-Ra (Safe-Range)**
 
-# Decentralized Instant Messenger (Sa-Ra) 
-dIM is an open-source instant messenger built first and foremost for iOS. It will also run on iPad but support is limited.
-It works without an internet connection and messages are sent and received through Bluetooth. For it to work optimally it will require other dIM users nearby. More information [can be found here](https://www.dimchat.org). 
+## **Sa-Ra** (Safe-Range), internet bağlantısı olmadan Bluetooth Low Energy (BLE) teknolojisini kullanarak grup içi iletişim ve koordinasyonu sağlayan yenilikçi bir mobil uygulamadır. Özellikle GSM ve Wi-Fi erişiminin kısıtlı olduğu durumlar için tasarlanmıştır. Proje, grup içindeki güvenliği artırmayı ve iletişim sorunlarını çözmeyi hedeflemektedir.
 
-![icon](./images/icon.png "dIM")
+## **🎯 Proje Hedefleri**
 
-### Platform support
-- iOS 16.0*
-- iPadOS 16.0* (not supported very well)
-- MacOS (through Catalyst)
+•Altyapısız bir grup iletişim ağı sağlamak.
 
-### Feature overview
-- Send and receive messages to contacts
-- Add contacts by scanning their QR-code with the camera or in the app
-- Encrypt all messages sent with private-key encryption
-- Delete messages and message threads
-- Change username
+•Özellikle kalabalık ortamlarda (ör. hac ziyareti, dağcılık, turist grupları) grup güvenliğini ve koordinasyonu artırmak.
 
-### Future ideas 
-- [ ] Android version 
-- [ ] Groups chats
-- [ ] Deep links
-- [ ] In-app notifications
-- [ ] Automate the documentation on PR approval
+•Acil durumlarda hızlı ve etkili bir iletişim ağı oluşturmak.
 
-### Getting started
-Clone the project and deploy it to an iPhone. Please note that the Bluetooth capabilities does not work in the simulator, therefore a physical device is necessary to test sending and receiving messages.
+## **🚀 Özellikler**
 
-If the username is set to `APPLEDEMO` a conversation will show up. This can be used to test the UI in a simulator (and is also used in the Apple App Store review process).
+•**Kayıt ve Doğrulama:** Kullanıcılar telefon numaralarıyla kayıt olur ve doğrulama koduyla hesaplarını aktive eder.
 
-#### Generating assets
-This project makes use of [SwiftGen](https://github.com/SwiftGen/SwiftGen#configuration-file). If you are not familiar with SwiftGen it is a tool that allows for type-safe assets. 
+•**Rehber Yetkilendirme:** Rehberler, kimlik doğrulamasından geçerek gruplar oluşturabilir ve yönetebilir.
 
-To add new assets simply add them in the `assets.xcassets` file and run `> swiftgen`. Type-safe assets will now be located in `Assets+Generated.swift`.
+•**Grup İletişimi:** Rehberler grup üyelerine duyurular gönderebilir ve mesajlar paylaşabilir.
 
-### Build documentation 
-Open the project, navigate to `Product -> Build Documentation`. This will create a DocC archive for you to explore. 
+•**Acil Durum Bildirimi:** Kullanıcılar rehberlere acil durum bildirimi gönderebilir; rehber bu bilgiyi grupla paylaşabilir.
+
+## **🛠️ Kullanılan Teknolojiler**
+
+•**SwiftUI:** iOS uygulama geliştirme için modern ve dinamik kullanıcı arayüzü.
+
+•**PostgreSQL:** Güçlü ve güvenilir bir veritabanı yönetim sistemi.
+
+•**Bluetooth Low Energy (BLE):** Düşük enerji tüketimli kablosuz iletişim teknolojisi.
+
+## **📸 Ekran Görüntüleri**
+
+(Burada uygulamanın ekran görüntülerine yer verebilirsin.)
+
+## **🛠️ Nasıl Çalıştırılır?**
+
+1.Bu repository’yi klonlayın:
+
+git clone https://github.com/RAhsencicek/sa-ra.git
+
+cd sa-ra
+
+2.Gerekli bağımlılıkları yükleyin ve Xcode ile açın.
+
+3.SwiftUI destekleyen bir simülatörde uygulamayı çalıştırın.
+
+## **🗂️ Proje Durumu**
+
+Bu proje şu anda aktif geliştirme aşamasındadır. Gelecekte eklenmesi planlanan özellikler:
+
+•LoRa teknolojisinin entegrasyonu.
+
+•Gelişmiş kullanıcı arayüzü iyileştirmeleri.
+
+•Daha fazla güvenlik önlemleri.
+
+## **👩‍💻 Katkıda Bulunmak**
+
+Katkılarınızı memnuniyetle karşılıyoruz! Lütfen katkı yapmak için:
+
+1.Bir fork oluşturun.
+
+2.Değişikliklerinizi yapın.
+
+3.Bir pull request açın.
+
+## **📩 İletişim**
+
+Herhangi bir sorunuz varsa veya daha fazla bilgi almak isterseniz, lütfen iletişime geçmekten çekinmeyin:
+
+**Geliştiriciler:**
+
+•[Ebrar Sena Mangan](https://github.com/ebrarmangan)
+
+•[R. Ahsen Çiçek](https://github.com/RAhsencicek)
+
+•[İbrahim Hulusi Oflaz](https://github.com/ihoflaz)
