@@ -1,5 +1,5 @@
 
-# Decentralized Instant Messenger (dIM) 
+# Decentralized Instant Messenger (Sa-Ra) 
 dIM is an open-source instant messenger built first and foremost for iOS. It will also run on iPad but support is limited.
 It works without an internet connection and messages are sent and received through Bluetooth. For it to work optimally it will require other dIM users nearby. More information [can be found here](https://www.dimchat.org). 
 
