@@ -45,15 +45,15 @@ struct AboutView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                FeatureCell(image: Image("appiconsvg"), title: "About dIM", subtitle: "dIM is an open-source decentralized chat app based on Bluetooth.")
-                FeatureCell(image: Image(systemName: "network"), title: "Peer-to-peer network", subtitle: "When you send a message to someone, it will go through a peer-to-peer Bluetooth network made up of other dIM users.")
-                FeatureCell(image: Image(systemName: "chevron.left.forwardslash.chevron.right"), title: "Open-Source", subtitle: "The source code of dIM is publicly available. This allow developers to verify and improve dIM to be the best and most secure decentralized messenger available. You can [view the Github repository here](https://github.com/KaffeDiem/dIM).")
-                FeatureCell(image: Image(systemName: "lock.circle"), title: "Encrypted and private", subtitle: "Messages are encrypted so that only you and the receiver can read them, protecting you from prying eyes.")
-                FeatureCell(image: Image(systemName: "bubble.left.and.bubble.right"), title: "Feedback is welcome", subtitle: "You can reach out to us by sending us an email or [visiting our website](https://www.dimchat.org).")
+                FeatureCell(image: Image("appiconsvg"), title: "SA-RA HAKKINDA", subtitle: "SA-RA Bluetooth tabanlı, açık kaynaklı, merkezi olmayan bir sohbet uygulamasıdır.")
+                FeatureCell(image: Image(systemName: "network"), title: "Peer-to-peer network", subtitle: "Birine bir mesaj gönderdiğinizde, bu mesaj diğer SA-RA kullanıcılarından oluşan bir Peer-to-peer (eşler arası Bluetooth ağı) üzerinden iletilir.")
+                FeatureCell(image: Image(systemName: "chevron.left.forwardslash.chevron.right"), title: "Git-Hub kütüphanemiz", subtitle: "SA-RA'nın kaynakları hakkında daha fazla bilgi edinmek için kütüphanemizi ziyaret edebilirsiniz. Geliştiriciler için SA-RA mevcut en iyi ve en güvenli merkezi olmayan mesajlaşma aracı olarak ilham vereceğini temenni ediyoruz. [Github deposunu buradan görüntüleyin](https://github.com/RAhsencicek/sa-ra).")
+                FeatureCell(image: Image(systemName: "lock.circle"), title: "Şifrelenmiş ve özel", subtitle: "Mesajlarınız şifrelenerek yalnızca sizin ve alıcının okuyabilmesi sağlanır ve böylece meraklı gözlerden korunursunuz :) ")
+                FeatureCell(image: Image(systemName: "bubble.left.and.bubble.right"), title: "Geri bildirimleriniz bizim için çok değerli", subtitle: "Bize e-posta gönderebilirsiniz veya [web sitemizi ziyaret edebilirsiniz](https://dfdfsa.my.canva.site/safe-range).")
                     .padding(.bottom, 20)
                 
                 Button {
-                    if !EmailHelper.shared.sendEmail(subject: "dIM Support or Feedback", body: "", to: "support@dimchat.org") {
+                    if !EmailHelper.shared.sendEmail(subject: "SA-RA için geri dönüşleriniz ve önerileriniz bizim için değerli ", body: "", to: "ahsen.cicek752@gmail.com") {
                         emailHelperAlertIsShown = true
                     }
                 } label: {
@@ -70,12 +70,12 @@ struct AboutView: View {
             }
         }
         .padding(20)
-        .navigationTitle("Decentralized Instant Messenger")
+        .navigationTitle("Merkezi Olmayan Anlık Mesajlaşma")
         .navigationBarTitleDisplayMode(.inline)
-        .alert("No default mail set", isPresented: $emailHelperAlertIsShown) {
+        .alert("Varsayılan posta ayarı yok", isPresented: $emailHelperAlertIsShown) {
             Button("OK", role: .cancel) { () }
         } message: {
-            Text("Set a default mailbox to send an email or use your favorite mail provider and contact us at support@dimchat.org")
+            Text("E-posta göndermek için varsayılan bir posta kutusu ayarlayın veya favori posta sağlayıcınızı kullanın ve bizimle şu adresten iletişime geçin: ahsen.cicek752@gmail.com")
         }
     }
 }
@@ -86,24 +86,16 @@ struct AboutView_Previews: PreviewProvider {
     }
 }
 
-/// An email helper class which allows us to send emails in the support section of
-/// the settings view.
+
 fileprivate class EmailHelper: NSObject, MFMailComposeViewControllerDelegate {
     /// The EmailHelper static object.
     public static let shared = EmailHelper()
     private override init() {}
     
-    /// Send an email by using the built in email app in iOS.
-    ///
-    /// Should show a pop-up in the future if the default mail has not been set.
-    /// - Parameters:
-    ///   - subject: The subject field for the email.
-    ///   - body: The text in the body of the email.
-    ///   - to: The receiving email address.
-    /// - Returns: A boolean confirming that a default email has been set up.
+    
     func sendEmail(subject:String, body:String, to:String) -> Bool {
         if !MFMailComposeViewController.canSendMail() {
-            print("No mail account found")
+            print("Hiçbir posta hesabı bulunamadı")
             return false
         }
         

@@ -78,24 +78,24 @@ struct SettingsView: View {
                 }
                 .foregroundColor(.accentColor)
             } header: {
-                Text("My Username")
+                Text("Kullanıcı adım")
             } footer: {
-                Text("If you change your username, you and your contacts will have to add each other again.")
+                Text("Kullanıcı adınızı değiştirirseniz, siz ve kişileriniz birbirinizi tekrar eklemek zorunda kalacaksınız.")
             }
             
             Section {
                 Toggle(isOn: $readStatusToggle) {
-                    Label("Show Read Receipts", systemImage: "eye.fill")
+                    Label("Okundu Bilgilerini Göster", systemImage: "eye.fill")
                         .imageScale(.large)
                 }
                 .toggleStyle(SwitchToggleStyle(tint: .accentColor))
             } footer: {
-                Text("Read receips allow your contacts to see if you have read their messages.")
+                Text("Okundu bilgisi, kişilerinizin mesajlarını okuyup okumadığınızı görmelerini sağlar.")
             }
             
             Section {
                 NavigationLink(destination: AboutView()) {
-                    Label("About & Contact", systemImage: "questionmark")
+                    Label("Hakkımızda & İletişim", systemImage: "questionmark")
                         .foregroundColor(.accentColor)
                         .imageScale(.large)
                 }
@@ -103,22 +103,22 @@ struct SettingsView: View {
             
             Section {
                 Label(
-                    appSession.connectedDevicesAmount < 0 ? "No devices connected." : "\(appSession.connectedDevicesAmount) devices connected.",
+                    appSession.connectedDevicesAmount < 0 ? "Bağlı cihaz yok." : "\(appSession.connectedDevicesAmount) cihaz bağlandı.",
                     systemImage: "ipad.and.iphone")
                     .imageScale(.large)
                 
-                Label("\(appSession.routedCounter) messages routed in this session.", systemImage: "arrow.left.arrow.right")
+                Label("\(appSession.routedCounter) Bu oturumda yönlendirilen mesajlar.", systemImage: "arrow.left.arrow.right")
                     .imageScale(.large)
             } header: {
-                Text("Connectivity")
+                Text("Bağlantı")
             } footer: {
-                Text("Information about connected devices and amount of messages routed through your phone.")
+                Text("Bağlı cihazlar ve telefonunuzdan yönlendirilen mesaj miktarı hakkında bilgiler içerir.")
             }
         }
         .symbolRenderingMode(.hierarchical)
         .autocapitalization(.none)
         .disableAutocorrection(true)
-        .navigationBarTitle("Settings", displayMode: .large)
+        .navigationBarTitle("Ayarlar", displayMode: .large)
         .onAppear {
             setUsernameTextFieldToStoredValue()
         }
@@ -153,7 +153,7 @@ struct SettingsView: View {
                 setUsernameTextFieldToStoredValue()
             }
         } message: {
-            Text("Changing your username will reset dIM Chat and remove your contacts. Do this carefully.")
+            Text("Kullanıcı adınızı değiştirmek SA-RA'yı sıfırlayacak ve kişilerinizi kaldıracaktır.")
         }
     }
     
@@ -171,7 +171,7 @@ struct SettingsView: View {
         do {
             try context.save()
         } catch {
-            print("Context could not be saved after deleting all conversations")
+            print("Tüm konuşmalar silindikten sonra kaynak kaydedilmez")
         }
     }
 }

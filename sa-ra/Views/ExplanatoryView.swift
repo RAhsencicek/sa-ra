@@ -25,11 +25,11 @@ struct SnapCarousel: View {
         let cardHeight: CGFloat = 279
         
         let items = [
-            Card(id: 0, text: "Send offline messages.", image: "appiconsvg"),
-            Card(id: 1, text: "Messages are sent through the Bluetooth connection of other dIM users.", image: "ExplanatoryMulti"),
-            Card(id: 2, text: "Add contacts by scanning each others QR code with the iPhone camera.", image: "ExplanatoryQR"),
-            Card(id: 3, text: "Your messages are safe. No one will ever have access to your messages except for you and the receiver.", image: "ExplanatoryLock"),
-            Card(id: 4, text: "Bluetooth has a range of 100m (330ft), therefore you must be close to other users of dIM.", image: "ExplanatoryRange"),
+            Card(id: 0, text: "Çevrimdışı mesaj gönder.", image: "appiconsvg"),
+            Card(id: 1, text: "Mesajlar diğer SA-RA kullanıcılarının Bluetooth bağlantısı üzerinden gönderilir.", image: "ExplanatoryMulti"),
+            Card(id: 2, text: "iPhone kameranızla birbirinizin QR kodunu tarayarak kişileri ekleyin.", image: "ExplanatoryQR"),
+            Card(id: 3, text: "Mesajlarınız güvendedir. Mesajlarınıza sizden ve alıcıdan başka hiç kimse erişemez.", image: "ExplanatoryLock"),
+            Card(id: 4, text: "SA-RA ile 50-100 metrelik Bluetooth menzili arttırılmıştır", image: "ExplanatoryRange"),
             Card(id: 5, text: "", image: "appiconsvg")
         ]
         
@@ -58,7 +58,7 @@ struct SnapCarousel: View {
                                 Button(action: {
                                     openURL(URL(string: "https://dimchat.org")!)
                                 }, label: {
-                                    Text("Read More")
+                                    Text("SA-RA hakkında daha fazla bilgi sahibi olmak için")
                                         .padding(UIState.activeCard == items.count - 1 ? 10 : 3)
                                         .foregroundColor(.white)
                                         .frame(maxWidth: .infinity)

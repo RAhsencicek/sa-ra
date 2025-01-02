@@ -29,7 +29,7 @@ struct QRView: View {
     
     init() {
         guard let username = UsernameValidator.shared.userInfo?.asString else {
-            fatalError("QR view was opened but no username has been set")
+            fatalError("QR görünümü açıldı ancak kullanıcı adı ayarlanmadı")
         }
         self.username = username
     }
@@ -42,7 +42,7 @@ struct QRView: View {
             
             Spacer()
             
-            Text("Scan the QR code")
+            Text("QR kodunu tarayın")
                 .font(.title)
                 .padding()
             
@@ -65,7 +65,7 @@ struct QRView: View {
                 
             Spacer(minLength: 150)
             
-            Text("Press the scan button and scan each others QR code. You must add each other.")
+            Text("Tarama butonuna basın ve birbirinizin QR kodunu tarayın. Birbirinizi eklemelisiniz.")
                 .font(.footnote)
                 .foregroundColor(.accentColor)
             
@@ -101,7 +101,7 @@ struct QRView: View {
 
                         }
                         Spacer()
-                        Text("Add a new contact by scanning their QR code.")
+                        Text("QR kodunu tarayarak yeni bir kişi ekleyin.")
                             .multilineTextAlignment(.center)
                             .font(.footnote)
                             .foregroundColor(.white)
@@ -117,7 +117,7 @@ struct QRView: View {
                 .resizable(resizingMode: .tile)
                 .edgesIgnoringSafeArea(.all)
         )
-        .navigationBarTitle("Add Contact", displayMode: .inline)
+        .navigationBarTitle("KİŞİ EKLE", displayMode: .inline)
     }
     
     /// Handles the result of the QR scan.

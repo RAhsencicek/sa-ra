@@ -47,11 +47,11 @@ struct HomeView: View {
                                 .environmentObject(appSession)
                         } label: {
                             VStack {
-                                Text(viewModel.getAuthor(for: conversation) ?? "Unknown")
+                                Text(viewModel.getAuthor(for: conversation) ?? "Bilinmeyen")
                                     .foregroundColor(.accentColor)
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                                Text(conversation.lastMessage ?? "Start a new conversation.")
+                                Text(conversation.lastMessage ?? "Yeni bir konuşma başlat.")
                                     .scaledToFit()
                                     .font(.footnote)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -62,21 +62,21 @@ struct HomeView: View {
                             // Clearing a conversation.
                             Button {
                                 conversation.removeFromMessages(conversation.messages!)
-                                conversation.lastMessage = "Start a new conversation."
+                                conversation.lastMessage = "Yeni bir konuşma başlat."
                                 do {
                                     try appSession.context.save()
                                 } catch {
-                                    print("Context could not be saved.")
+                                    print("Bağlam kaydedilemedi.")
                                 }
                             } label: {
-                                Label("Clear", systemImage: "exclamationmark.bubble.fill")
+                                Label("Temizle", systemImage: "exclamationmark.bubble.fill")
                             }
                             .tint(.accentColor)
                             
                             Button(role: .destructive) {
                                 deleteContact(for: conversation)
                             } label: {
-                                Label("Delete", systemImage: "person.fill.xmark")
+                                Label("Sil", systemImage: "person.fill.xmark")
                             }
                         }
                     }
@@ -89,7 +89,7 @@ struct HomeView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack {
-                    Text("Chats")
+                    Text("Mesajlar")
                         .font(.headline)
                     if appSession.connectedDevicesAmount < 1 {
                         HStack {
@@ -97,7 +97,7 @@ struct HomeView: View {
                                 .imageScale(.small)
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(.red, .orange, .white)
-                            Text("Not connected")
+                            Text("Bağlı değil")
                                 .foregroundColor(.accentColor)
                                 .font(.subheadline)
                         }
@@ -105,7 +105,7 @@ struct HomeView: View {
                         HStack {
                             Image(systemName: "antenna.radiowaves.left.and.right")
                                 .imageScale(.small)
-                            Text("\(appSession.connectedDevicesAmount) in range").font(.subheadline)
+                            Text("\(appSession.connectedDevicesAmount) bağlı kullanıcı").font(.subheadline)
                         }
                     }
                 }
@@ -130,7 +130,7 @@ struct HomeView: View {
         do {
             try appSession.context.save()
         } catch {
-            print("[Error] Could not delete conversations.")
+            print("[Error] Konuşmalar silinemedi.")
         }
     }
     
