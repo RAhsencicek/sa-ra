@@ -3,7 +3,7 @@ import XCTest
 
 final class DataControllerTests: XCTestCase {
     func testExample() throws {
-        
-        XCTAssertEqual(DataController().text, "Hello, World!")
+        let dataController = LiveDataController(config: .init(usernameWithRandomDigits: "test_user"))
+        XCTAssertTrue(dataController is DataController)
     }
 }
