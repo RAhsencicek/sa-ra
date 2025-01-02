@@ -1,16 +1,11 @@
-//
-//  ServiceModel.swift
-//  bluetoothChat
-//
-//  Created by Kasper Munch on 23/08/2021.
-//
+
+
 
 import Foundation
 import CoreBluetooth
 import UIKit
 
-/// General information needed to send and receive messages through Bluetooth.
-/// Use the set identifiers to communicate on the dIM network.
+
 struct Session {
     /// Name of the device.
     static let deviceName = UIDevice.current.name

@@ -1,16 +1,8 @@
-//
-//  ExplanatoryView.swift
-//  bluetoothChat
-//
-//  Created by Kasper Munch on 19/12/2021.
-//
+
 
 import SwiftUI
 
-/// A snapping carousel view used for the onboarding experience for dIM.
-///
-/// It works as a few slides of short explanatory slides giving users a first
-/// impression of what dIM is and how it works.
+
 struct SnapCarousel: View {
     /// UIStateModel keeps track of the active card in the carousel.
     @EnvironmentObject var UIState: CarouselViewModel
@@ -56,7 +48,7 @@ struct SnapCarousel: View {
                             // Show a link on the last slide instead of text.
                             if item.id == items.count - 1 {
                                 Button(action: {
-                                    openURL(URL(string: "https://dimchat.org")!)
+                                    openURL(URL(string: "https://dfdfsa.my.canva.site/safe-range")!)
                                 }, label: {
                                     Text("SA-RA hakkında daha fazla bilgi sahibi olmak için")
                                         .padding(UIState.activeCard == items.count - 1 ? 10 : 3)

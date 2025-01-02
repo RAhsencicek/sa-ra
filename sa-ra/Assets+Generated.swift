@@ -1,5 +1,3 @@
-// swiftlint:disable all
-// Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
 #if os(macOS)
   import AppKit
@@ -12,17 +10,13 @@
   import SwiftUI
 #endif
 
-// Deprecated typealiases
+
 @available(*, deprecated, renamed: "ColorAsset.Color", message: "This typealias will be removed in SwiftGen 7.0")
 internal typealias AssetColorTypeAlias = ColorAsset.Color
 @available(*, deprecated, renamed: "ImageAsset.Image", message: "This typealias will be removed in SwiftGen 7.0")
 internal typealias AssetImageTypeAlias = ImageAsset.Image
 
-// swiftlint:disable superfluous_disable_command file_length implicit_return
 
-// MARK: - Asset Catalogs
-
-// swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
   internal static let explanatoryLock = ImageAsset(name: "ExplanatoryLock")
@@ -40,9 +34,9 @@ internal enum Asset {
   internal static let greyDark = ColorAsset(name: "greyDark")
   internal static let greyLight = ColorAsset(name: "greyLight")
 }
-// swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
-// MARK: - Implementation Details
+
+
 
 internal final class ColorAsset {
   internal fileprivate(set) var name: String
@@ -66,7 +60,7 @@ internal final class ColorAsset {
   internal func color(compatibleWith traitCollection: UITraitCollection) -> Color {
     let bundle = BundleToken.bundle
     guard let color = Color(named: name, in: bundle, compatibleWith: traitCollection) else {
-      fatalError("Unable to load color asset named \(name).")
+      fatalError("Adlandırılmış renk varlığı yüklenemedi \(name).")
     }
     return color
   }
@@ -139,7 +133,7 @@ internal struct ImageAsset {
   internal func image(compatibleWith traitCollection: UITraitCollection) -> Image {
     let bundle = BundleToken.bundle
     guard let result = Image(named: name, in: bundle, compatibleWith: traitCollection) else {
-      fatalError("Unable to load image asset named \(name).")
+      fatalError("Adlandırılmış renk varlığı yüklenemedi \(name).")
     }
     return result
   }
@@ -199,4 +193,4 @@ private final class BundleToken {
     #endif
   }()
 }
-// swiftlint:enable convenience_type
+

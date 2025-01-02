@@ -1,9 +1,4 @@
-//
-//  DataControllerDelegate.swift
-//  dIM
-//
-//  Created by Kasper Munch on 04/04/2023.
-//
+
 
 import Foundation
 

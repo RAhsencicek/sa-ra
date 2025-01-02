@@ -1,9 +1,4 @@
-//
-//  BluetoothManager.swift
-//  bluetoothChat
-//
-//  Created by Kasper Munch on 23/08/2021.
-//
+
 
 import Foundation
 import SwiftUI
@@ -11,15 +6,7 @@ import CoreData
 import Combine
 import DataController
 
-/// The Bluetooth Manager handles all searching for, creating connection to
-/// and sending/receiving messages to/from other Bluetooth devices.
-///
-/// This class handles almost all the logic in the app and is passed around
-/// to the different views such that they all have access to the same Bluetooth
-/// objects as well as conversations. When the app is launched all the information
-/// is stored in memory and written to the persistent storage as needed.
-/// - Note: It conforms to a variety of delegates which is used for callback functions from the Apple APIs.
-/// - Note: In code the AppSession has been divided into files for seperation and isolation of features.
+
 class AppSession: ObservableObject  {
     
     private var cancellables = Set<AnyCancellable>()
@@ -33,37 +20,30 @@ class AppSession: ObservableObject  {
         }
     }
     
-    /// Managed object context for saving to CoreData
+   
     let context: NSManagedObjectContext
     
-    /// A simple counter to show amount of relayed messages this session.
-    /// It is reset when the app is force-closed or the device is restarted.
+  
     @Published var routedCounter: Int = 0
     
-    /// A UUID which is updated when a **ACK** message is retrieved. This forces
-    /// a refresh of the `ChatView` and the message status is updated.
+   
     @Published var refreshID = UUID()
     
     @Published private(set) var connectedDevicesAmount = 0
     
     
-    /// Save messages which has been seen before such that they are not sent again.
-    /// Otherwise they can loop around in the network forever.
+    
     var seenMessages: [Int32] = []
     
-    /// A dictionary which stores how many messages we have received from a connected peripheral.
-    /// It is cleaned from time to time as well.
+   
     var peripheralMessages: [String : [Date]] = [:]
     
-    /// A dictionary which holds the ids of messages relayed and the corresponding sender
-    /// of said messages. This is used for DSR.
+    
     var senderOfMessageID: [Int32 : String] = [:]
     
     private var dataController: LiveDataController
     
-    /// The initialiser for the AppSession.
-    /// Sets up the `centralManager` and the `peripheralManager`.
-    /// - Parameter context: The context for persistent storage to `CoreData`
+  
     init(context: NSManagedObjectContext) {
         self.context = context
         self.dataController = LiveDataController(config: .init(usernameWithRandomDigits: ""))
@@ -72,7 +52,7 @@ class AppSession: ObservableObject  {
     }
     
     private func setupBindings() {
-        // Reset the DataController if the username changes
+       
         UsernameValidator.shared.$userInfo.sink { [unowned self] userInfo in
             guard let userInfo else { return }
             let usernameWithDigits = userInfo.asString
@@ -98,7 +78,7 @@ class AppSession: ObservableObject  {
     func send(text message: String, conversation: ConversationEntity) async {
         var messageToBeStored: Message
         do {
-            // Encrypt the plan text message before handing it over to the `DataController`
+           
             guard let receipentPublicKey = conversation.publicKey, let receipent = conversation.author else {
                 fatalError("Tried to fetch public key of conversation but it was nil")
             }
@@ -158,12 +138,7 @@ class AppSession: ObservableObject  {
         }
     }
     
-    /// Send read type message once the user has read a given message.
-    ///
-    /// - Note: The format of the read message is `READ/id1/id2/` where the
-    /// ids are of those which has now been read.
-    ///
-    /// - Parameter conversation: The given conversation in which we have read the messages.
+   
     func sendReadMessages(for conversation: ConversationEntity) async {
         guard let usernameWithDigits = UsernameValidator.shared.userInfo?.asString else {
             fatalError("Tried to send read messages before username was set.")
@@ -210,7 +185,7 @@ class AppSession: ObservableObject  {
     }
 }
     
-// MARK: Private methods
+
 extension AppSession {
     private func receive(encryptedMessage: Message) async {
         await context.perform { [weak self] in
@@ -300,16 +275,13 @@ extension AppSession {
             let conversation = self.getConversationFor(message: message)
             guard let conversation else { return }
             
-            // Check if message is a READ type
+            
             var components = message.text.components(separatedBy: "/")
             guard components.first == "READ" && components.count > 1 else {
                 return
             }
             
-            /*
-             Remove first element as it is then just an array of
-             message IDs which has been read.
-             */
+            
             components.removeFirst()
             components.removeLast()
             
@@ -385,9 +357,9 @@ extension AppSession: DataControllerDelegate {
     }
 }
 
-// MARK: Helpers
+
 extension AppSession {
-    /// Fetch a given conversation entity from CoreData where a message should belong.
+    
     private func getConversationFor(message: Message) -> ConversationEntity? {
         let fetchRequest = ConversationEntity.fetchRequest()
         let conversations = try? fetchRequest.execute()
@@ -407,8 +379,6 @@ extension AppSession {
         return CryptoHandler.decryptMessage(text: message.text, symmetricKey: symmetricKey)
     }
     
-    /// Send a notification to the user if the app is closed and and we retrieve a message.
-    /// - Parameter message: The message that the user has received.
     private func sendNotificationWith(text: String, from sender: String) {
         let content = UNMutableNotificationContent()
         content.title = sender.components(separatedBy: "#").first ?? "Maybe: \(sender)"

@@ -1,9 +1,4 @@
-//
-//  UsernameValidator.swift
-//  dIM
-//
-//  Created by Kasper Munch on 07/10/2022.
-//
+
 
 import Foundation
 import Combine

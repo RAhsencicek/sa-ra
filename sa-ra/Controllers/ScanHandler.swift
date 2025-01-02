@@ -1,9 +1,4 @@
-//
-//  ScanHandler.swift
-//  dIM
-//
-//  Created by Kasper Munch on 22/02/2023.
-//
+
 
 import Foundation
 import CoreData

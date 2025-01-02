@@ -51,7 +51,7 @@ struct ChatView: View {
         if let username = UsernameValidator.shared.userInfo?.asString {
             self.username = username
         } else {
-            fatalError("Unexpectedly did not find any username while opening a chat view")
+            fatalError("Sohbet görünümü açılırken beklenmedik bir şekilde kullanıcı adı bulunamadı")
         }
         
         self.title = conversation.author?.components(separatedBy: "#").first ?? "Unknown"
@@ -71,10 +71,10 @@ struct ChatView: View {
                                 // Copy to clipboard
                                 Button(role: .none) {
                                     UIPasteboard.general.setValue(
-                                        message.text ?? "Something went wrong copying from dIM",
+                                        message.text ?? "SA-RA kopyalama sırasında bir sorun oluştu",
                                         forPasteboardType: "public.plain-text")
                                 } label: {
-                                    Label("Copy", systemImage: "doc.on.doc")
+                                    Label("Kopyala", systemImage: "doc.on.doc")
                                 }
                                 // Resend a message which has not been delivered
                                 if message.sender == username {
@@ -83,7 +83,7 @@ struct ChatView: View {
                                             await appSession.send(text: message.text ?? "", conversation: conversation)
                                         }
                                     } label: {
-                                        Label("Resend", systemImage: "arrow.uturn.left.circle")
+                                        Label("Tekrar gönder", systemImage: "arrow.uturn.left.circle")
                                     }
                                 }
                                 // Delete button
@@ -95,19 +95,19 @@ struct ChatView: View {
                                         appSession.showErrorMessage(error.localizedDescription)
                                     }
                                 }, label: {
-                                    Label("Delete", systemImage: "minus.square")
+                                    Label("Sil", systemImage: "minus.square")
                                 })
                                 // Report button
                                 Button(role: .destructive, action: {
                                     reportAlertIsShown = true
                                 }, label: {
-                                    Label("Report", systemImage: "exclamationmark.bubble")
+                                    Label("Rapor", systemImage: "exclamationmark.bubble")
                                 })
                             }
-                            .alert("Report Message", isPresented: $reportAlertIsShown) {
+                            .alert("Rapor Mesajı", isPresented: $reportAlertIsShown) {
                                 Button("OK", role: .cancel) {}
                             } message: {
-                                Text("dIM stores all data on yours and the senders device. Therefore you should block the user who has sent this message to you if you deem it inappropriate.\nIllegal content should be reported to the authorities.")
+                                Text(" SA-RA tüm verileri sizin ve gönderenin cihazında depolar. Bu nedenle, uygunsuz olduğunu düşünüyorsanız bu mesajı size gönderen kullanıcıyı engellemelisiniz.")
                             }
                         }
                     }

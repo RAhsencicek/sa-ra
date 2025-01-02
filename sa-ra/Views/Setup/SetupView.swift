@@ -1,9 +1,4 @@
-//
-//  SetUpView.swift
-//  bluetoothChat
-//
-//  Created by Kasper Munch on 26/08/2021.
-//
+
 
 import SwiftUI
 
@@ -55,7 +50,7 @@ struct SetupView: View {
                         
                         // TextField for setting username
                         VStack {
-                            TextField("Enter username", text: $usernameTextField) {
+                            TextField("Kullanıcı adını girin", text: $usernameTextField) {
                                 hideKeyboard()
                             }
                                 .keyboardType(.namePhonePad)
@@ -88,8 +83,8 @@ struct SetupView: View {
                         VStack {
                             // EULA part.
                             HStack {
-                                Text("By continuing you agree to the")
-                                Link("EULA", destination: URL(string: "https://www.dimchat.org/eula")!)
+                                Text("Devam ederek şunları kabul etmiş olursunuz:")
+                                Link("Son kullanıcı lisans sözleşmesi", destination: URL(string: "https://dfdfsa.my.canva.site/safe-range")!)
                             }
                             
                             // Enter button
@@ -97,7 +92,7 @@ struct SetupView: View {
                                 UsernameValidator.shared.set(username: usernameTextField, context: context)
                                 id = UUID() // Hack to force refresh view
                             } label: {
-                                Text("Continue")
+                                Text("Devam Et")
                                     .padding()
                                     .foregroundColor(.white)
                                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -121,7 +116,7 @@ struct SetupView: View {
                             options: [.alert, .badge, .sound]
                         ) { success, error in
                             if success {
-                                print("All set!")
+                                print("Tamamdır!")
                             } else if let e = error {
                                 print(e.localizedDescription)
                             }

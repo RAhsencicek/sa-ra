@@ -1,9 +1,4 @@
-//
-//  Extenstions+RemoveFocusOnTap.swift
-//  dIM
-//
-//  Created by Kasper Munch on 24/02/2023.
-//
+
 
 import SwiftUI
 

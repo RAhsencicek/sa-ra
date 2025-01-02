@@ -1,9 +1,3 @@
-//
-//  BannerModifier.swift
-//  dIM
-//
-//  Created by Kasper Munch on 18/02/2023.
-//
 
 import Foundation
 import SwiftUI

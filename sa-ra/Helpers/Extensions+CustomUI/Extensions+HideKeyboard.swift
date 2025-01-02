@@ -1,9 +1,4 @@
-//
-//  Extensions+HideKeyboard.swift
-//  dIM
-//
-//  Created by Kasper Munch on 09/02/2023.
-//
+
 
 import SwiftUI
 

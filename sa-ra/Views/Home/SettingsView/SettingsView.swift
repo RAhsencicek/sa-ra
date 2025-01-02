@@ -1,22 +1,14 @@
-//
-//  SettingsView.swift
-//  bluetoothChat
-//
-//  Created by Kasper Munch on 25/08/2021.
-//
+
 
 import SwiftUI
 
-/// The main `SettingsView` which shows a number of subviews for different purposes.
-///
-/// It is here that we set new usernames and toggles different settings.
-/// It also shows contact information for dIM among other things.
+
 struct SettingsView: View {
-    /// CoreDate context object
+    
     @Environment(\.managedObjectContext) var context
     @Environment(\.colorScheme) var colorScheme
     
-    /// The `UserDefaults` for getting information from persistent storage.
+    
     private let defaults = UserDefaults.standard
     
     /// The `AppSession` to get things from the logic layer.

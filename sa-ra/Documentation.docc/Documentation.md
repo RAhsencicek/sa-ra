@@ -4,7 +4,7 @@ An instant messenger app that works by using Bluetooth.
 
 ## Overview
 
-Decentralized Instant Messenger (dIM in short) is an offline messaging app for iOS. It allows you to keep chatting with your friends in case of emergencies, riots or natural disasters. 
+Decentralized Instant Messenger (SA-RAin short) is an offline messaging app for iOS. It allows you to keep chatting with your friends in case of emergencies, riots or natural disasters. 
 
 The app is built using SwiftUI. This document will cover the most essential features of the app. 
 

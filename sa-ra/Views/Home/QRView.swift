@@ -1,30 +1,21 @@
-//
-//  QRScreen.swift
-//  bluetoothChat
-//
-//  Created by Kasper Munch on 29/08/2021.
-//
+
 
 import SwiftUI
 import CodeScanner
 import CoreImage.CIFilterBuiltins
 
-/// The `QRView` gets the users public key in a string format,
-/// then generates a QR code and displays it nicely.
+
 struct QRView: View {
     
-    /// The colorscheme of the current users device. Used for displaying
-    /// different visuals depending on the colorscheme.
+    
     @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var appSession: AppSession
     
-    /// The username fetched from `UserDefaults`
     private let username: String
-    
-    /// Contect for drawing of the QR code.
+ 
     private let context = CIContext()
-    /// Filter for drawing the QR code. Built-in function.
+   
     private let filter = CIFilter.qrCodeGenerator()
     
     init() {
@@ -51,11 +42,7 @@ struct QRView: View {
                     .foregroundColor(.white)
                     .frame(width: 225, height: 225)
                 
-                /*
-                 Show the QR code which can be scanned to add you as a contact.
-                 The form of the QR code is:
-                 dim://username//publickey
-                 */
+               
                 Image(uiImage: generateQRCode(from: "dim://\(username)//\(CryptoHandler.fetchPublicKeyString())"))
                     .interpolation(.none)
                     .resizable()
@@ -132,9 +119,7 @@ struct QRView: View {
         }
     }
     
-    /// Generates a QR code given some string as an input.
-    /// - Parameter string: The string to generate a QR code from. Formatted as dim://username//publickey
-    /// - Returns: A UIImage for displaying on the phone.
+   
     private func generateQRCode(from string: String) -> UIImage {
         let data = Data(string.utf8)
         filter.setValue(data, forKey: "inputMessage")

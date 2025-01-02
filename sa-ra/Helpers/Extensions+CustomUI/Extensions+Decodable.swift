@@ -1,9 +1,4 @@
-//
-//  Extensions+Decodable.swift
-//  dIM
-//
-//  Created by Kasper Munch on 15/02/2023.
-//
+
 
 import Foundation
 

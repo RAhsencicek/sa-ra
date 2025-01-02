@@ -1,25 +1,17 @@
-//
-//  SceneDelegate.swift
-//  bluetoothChat
-//
-//  Created by Kasper Munch on 23/08/2021.
-//
+
 
 import UIKit
 import SwiftUI
 import CoreData
 import UserNotifications
 
-/// Default class generated for iOS apps.
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var window: UIWindow?
     lazy var appSession = AppSession(context: context)
 
-    /// Handle deep links for scanning contacts from the camera app.
-    ///
-    /// - Note: URL should be formatted as dim://username//publickey
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url{
             let urlStr = url.absoluteString
@@ -42,14 +34,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    /// Save data to CoreData when app is closed
+   
     func sceneDidEnterBackground(_ scene: UIScene) {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
-    /// Migrate users prior to version 2.*
+    
     private func migrateIfNecessary() {
-        // Username used to be stored as 'Username' in UserDefaults with its digits.
+        
         guard let username = UserDefaults.standard.string(forKey: "Username") else {
             print("-- NO NEED TO MIGRATE USER --")
             return

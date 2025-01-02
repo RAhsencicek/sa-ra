@@ -1,9 +1,4 @@
-//
-//  AboutView.swift
-//  bluetoothChat
-//
-//  Created by Kasper Munch on 16/10/2021.
-//
+
 
 import SwiftUI
 import Foundation
@@ -37,8 +32,7 @@ struct FeatureCell: View {
     }
 }
 
-/// The `About` section in the `SettingsView`.
-/// This is the small **dim** icon in the top of the settings as well as the description.
+
 struct AboutView: View {
     @State private var emailHelperAlertIsShown = false
     
